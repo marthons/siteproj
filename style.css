@@ -1,9 +1,12 @@
+*{
+    background-color: #CDD4DC;  
+    font-family: Verdana, sans-serif;
+}
+
 .principal {
     width: 100vw;
     height: 100vh;
-    background-color: #CDD4DC;
     text-align: center;
-    font-family: Verdana, sans-serif;
 }
 
 .area-texto {
