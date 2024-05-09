@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' type='text/css' href='style.css'>
+        <script src="script.js" defer></script>
+        <title>Solicitação Inclusão de acesso SIGA</title>
+    </head>
+
+    <body>
+        <h2>Solicitação Inclusão de acesso SIGA</h2>
+        <h3> A Paz de Deus,
+        Segue formulário de Solicitação de Inclusão de novos acessos no SIGA.
+
+        Esse formulário tem como objetivo colher os dados necessários para inclusão de novos acessos (módulos) no SIGA.
+
+        Descreva com detalhes a necessidade e o acesso desejado.
+
+        Qualquer dúvida, entrar em contato com o usuário chave (Tiago Aderbal - 14 998761501)
+        </h3>
+        <form id="solicitarAcessoForm">
+            <label for="nome">Nome completo:</label><br>
+            <input type="text" id="nome" name="nome" required><br>
+
+            <label for="comum">Comum:</label><br>
+            <input type="text" id="comum" name="comum" required><br>
+
+            <label for="cidade">Cidade:</label><br>
+            <select id="cidade" name="cidade" required>
+                <option value="Pederneiras">Pederneiras</option>
+                <option value="Bariri">Bariri</option>
+                <option value="Macatuba">Macatuba</option>
+                <option value="Itaju">Itaju</option>
+                <option value="Boraceia">Boraceia</option>
+            </select><br>
+
+            <label for="cpf">CPF:</label><br>
+            <input type="text" id="cpf" name="cpf" required><br>
+
+            <label for="setor">Setor:</label><br>
+            <select id="setor" name="setor" required>
+                <option value="Compras">Compras</option>
+                <option value="Tesouraria">Tesouraria</option>
+                <option value="Contabilidade">Contabilidade</option>
+                <!-- Adicione outras opções conforme necessário -->
+            </select><br>
+
+            <label for="acessos">Acessos necessários:</label><br>
+            <textarea id="acessos" name="acessos" rows="4" cols="50" required></textarea><br><br>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </body>
+
+</html>
