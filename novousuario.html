@@ -6,52 +6,82 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel='stylesheet' type='text/css' href='style.css'>
         <script src="script.js" defer></script>
+        <script src="xlsx.full.min.js" defer></script>
+        <script src="app.js" defer></script>
+
         <title>Solicitação Inclusão de acesso SIGA</title>
     </head>
 
     <body>
-        <h2>Solicitação Inclusão de acesso SIGA</h2>
-        <h3> A Paz de Deus,
-        Segue formulário de Solicitação de Inclusão de novos acessos no SIGA.
+        <div class="container">
+        <section class="texto">
+            <h2>Solicitação Inclusão de acesso</h2>
+            <h3>
+                <p>Prezado(a),</p>
+                <p>Espero que esta mensagem o(a) encontre bem.</p>
+                <p>Por meio deste, encaminho-lhe o formulário de Solicitação de Inclusão de Novos Acessos no Sistema.</p>
+                <p>Este formulário destina-se a coletar informações essenciais para a inclusão de novos acessos (módulos) no Sistema. Sua descrição detalhada sobre a necessidade e o acesso desejado é fundamental para garantir uma implementação eficaz e personalizada.</p>
+                <p>Pedimos que preencha o formulário com o máximo de detalhes possível, a fim de proporcionar uma melhor compreensão e atendimento às suas necessidades.</p>
+                <p>Em caso de dúvidas ou necessidade de orientações adicionais, não hesite em entrar em contato com o usuário-chave responsável (nome do usuário-chave e seu contato telefônico).</p>
+                <p>Agradecemos antecipadamente pela sua colaboração e aguardamos o retorno do formulário preenchido.</p>
+                <p>Atenciosamente,</p>
+                <p>[Seu Nome]</p>
+                <p>[Seu Cargo/Organização]</p>
+                <p>Sinta-se à vontade para ajustar o texto conforme necessário para se adequar às suas especificações.</p>
+            </h3>
+        </section>
+        <section class="forms">
+            <form id="solicitarAcessoForm" action="http://localhost:3000/submit" method="post">
+                <label for="nome">Nome completo:</label><br>
+                <input type="text" id="nome" name="nome" required autocomplete><br>
+                <p id="nome-helper" class="helper-text">Mensagem de ajuda.</p>
 
-        Esse formulário tem como objetivo colher os dados necessários para inclusão de novos acessos (módulos) no SIGA.
+                <label for="comum">Comum:</label><br>
+                <input type="text" id="comum" name="comum" required autocomplete><br>
+                <p id="comum-helper" class="helper-text">Mensagem de ajuda.</p>
 
-        Descreva com detalhes a necessidade e o acesso desejado.
+                <label for="cidade">Cidade:</label><br>
+                <select id="cidade" name="cidade" >
+                    <option value="Pederneiras">Pederneiras</option>
+                    <option value="Bariri">Bariri</option>
+                    <option value="Macatuba">Macatuba</option>
+                    <option value="Itaju">Itaju</option>
+                    <option value="Boraceia">Boraceia</option>
+                </select><br>
 
-        Qualquer dúvida, entrar em contato com o usuário chave (Tiago Aderbal - 14 998761501)
-        </h3>
-        <form id="solicitarAcessoForm">
-            <label for="nome">Nome completo:</label><br>
-            <input type="text" id="nome" name="nome" required><br>
+                <label for="cpf">CPF:</label><br>
+                <input type="text" id="cpf" name="cpf" required autocomplete><br>
+                <p id="cpf-helper" class="helper-text">Mensagem de ajuda.</p>
 
-            <label for="comum">Comum:</label><br>
-            <input type="text" id="comum" name="comum" required><br>
+                <label for="setor">Setor:</label><br>
+                <select id="setor" name="setor" required>
+                    <option value="Compras">Compras</option>
+                    <option value="Tesouraria">Tesouraria</option>
+                    <option value="Contabilidade">Contabilidade</option>
+                    <option value="Secretaria">Secretaria</option>
+                    <option value="Conselho Fiscal">Conselho Fiscal</option>
+                    <option value="Patrimônio Móveis">Patrimônio Móveis</option>
+                    <option value="Patrimônio Imóveis">Patrimônio Imóveis</option>
+                    <option value="Voluntariado">Voluntariado</option>
+                    <option value="Manutenção">Manutenção</option>
+                    <option value="Movimentação e Controle">Movimentação e Controle</option>
+                    <option value="Informática">Informática</option>
+                    <option value="Engenharia">Engenharia</option>
+                    <option value="CCLimp">CCLimp</option>
+                    <option value="Segurança">Segurança</option>
+                    <option value="Fundo Bíblico (Distribuidora)">Fundo Bíblico (Distribuidora)</option>
+                    <option value="Jurídico">Jurídico</option>
 
-            <label for="cidade">Cidade:</label><br>
-            <select id="cidade" name="cidade" required>
-                <option value="Pederneiras">Pederneiras</option>
-                <option value="Bariri">Bariri</option>
-                <option value="Macatuba">Macatuba</option>
-                <option value="Itaju">Itaju</option>
-                <option value="Boraceia">Boraceia</option>
-            </select><br>
+                </select><br>
 
-            <label for="cpf">CPF:</label><br>
-            <input type="text" id="cpf" name="cpf" required><br>
 
-            <label for="setor">Setor:</label><br>
-            <select id="setor" name="setor" required>
-                <option value="Compras">Compras</option>
-                <option value="Tesouraria">Tesouraria</option>
-                <option value="Contabilidade">Contabilidade</option>
-                <!-- Adicione outras opções conforme necessário -->
-            </select><br>
+                <label for="acessos">Acessos necessários:</label><br>
+                <textarea id="acessos" name="acessos" rows="4" cols="50" required autocomplete></textarea><br><br>
 
-            <label for="acessos">Acessos necessários:</label><br>
-            <textarea id="acessos" name="acessos" rows="4" cols="50" required></textarea><br><br>
-
-            <button type="submit">Enviar</button>
-        </form>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </div>
     </body>
 
 </html>

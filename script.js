@@ -1,59 +1,111 @@
-// Aqui você pode adicionar seu código JavaScript para interagir com os elementos HTML
-document.getElementById('criarUsuario').addEventListener('click', function (event) {
-    // Seu código aqui para lidar com o evento de clicar em "Criar novo Usuário"
-    // Por exemplo, você pode adicionar uma função para rastrear esse evento ou realizar alguma ação específica
+//tooglePopup
+
+function tooglePopup(input, label){
+    //mostrar popup de campo obrigatório
+    input.addEventListener("focus", () => {
+        label.classList.add("required-popup");
+    });
+
+    // ocultar popup obrigatório
+    input.addEventListener("blur", () => {
+        label.classList.remove("required-popup");
+    });
+}
+
+function estilizarInputCorreto(input, helper){
+    helper.classList.remove("visible");
+    input.classList.remove("error");
+    input.classList.add("correct");
+}
+
+function estilizarInputIncorreto(input, helper){
+    helper.classList.add("visible");
+    input.classList.add("error");
+    input.classList.remove("correct");
+}
+
+// validação
+
+// Validação nome
+let nomeInput = document.getElementById("nome");
+let nomeLabel = document.querySelector('label[for="nome"]');
+let nomeHelper = document.getElementById("nome-helper");
+
+tooglePopup(nomeInput, nomeLabel);
+
+nomeInput.addEventListener("change", (e) => {
+    let valor = e.target.value;
+
+    if(valor.length < 3) {
+        nomeHelper.innerText = "Seu nome precisa ter três ou mais caracteres";
+        estilizarInputIncorreto(nomeInput, nomeHelper);
+        inputCorretos.nome = false;
+    } else {
+        estilizarInputCorreto(nomeInput, nomeHelper);
+        inputCorretos.nome = true;
+    }
 });
 
-document.getElementById('alterarAcesso').addEventListener('click', function (event) {
-    // Seu código aqui para lidar com o evento de clicar em "Alterar acesso"
+
+let cpfInput = document.getElementById("cpf");
+let cpfLabel = document.querySelector('label[for="cpf"]');
+let cpfHelper = document.getElementById("cpf-helper");
+
+tooglePopup(cpfInput, cpfLabel);
+
+cpfInput.addEventListener("change", (e) => {
+    let valor = e.target.value;
+
+
+
+    if (valor.length != 11) {
+        cpfHelper.innerText = "CPF inválido: deve conter 11 dígitos.";
+        estilizarInputIncorreto(cpfInput, cpfHelper);
+        inputCorretos.cpf = false;
+    }else {
+        estilizarInputCorreto(cpfInput, cpfHelper);
+        inputCorretos.cpf = true;
+    }
+
 });
 
-document.getElementById('reativarAcesso').addEventListener('click', function (event) {
-    // Seu código aqui para lidar com o evento de clicar em "Reativar acesso"
-});
+// Validação comum
+let comumInput = document.getElementById("comum");
+let comumLabel = document.querySelector('label[for="comum"]');
+let comumHelper = document.getElementById("comum-helper");
 
-//novousuario
+tooglePopup(comumInput, comumLabel);
 
-document.getElementById("solicitarAcessoForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Evita o envio do formulário padrão
-    
-    // Captura dos dados do formulário
-    var nome = document.getElementById("nome").value;
-    var cidade = document.getElementById("cidade").value;
-    var cpf = document.getElementById("cpf").value;
-    var setor = document.getElementById("setor").value;
-    var acessos = document.getElementById("acessos").value;
+comumInput.addEventListener("change", (e) => {
+    let valor = e.target.value;
 
-    // Exibição dos dados no console (pode ser substituído por envio para servidor)
-    console.log("Nome: " + nome);
-    console.log("Cidade: " + cidade);
-    console.log("CPF: " + cpf);
-    console.log("Setor: " + setor);
-    console.log("Acessos necessários: " + acessos);
-
-    // Limpa o formulário após o envio
-    document.getElementById("solicitarAcessoForm").reset();
+    if(valor.length < 3) {
+        comumHelper.innerText = "O comum precisa ter três ou mais caracteres";
+        estilizarInputIncorreto(comumInput, comumHelper);
+        inputCorretos.comum = false;
+    } else {
+        estilizarInputCorreto(comumInput, comumHelper);
+        inputCorretos.comum = true;
+    }
 });
 
 
-//alterar acesso
 
-document.getElementById("changeAccessForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    var username = document.getElementById("username").value;
-    var newPassword = document.getElementById("newPassword").value;
-    console.log("Usuário: " + username + ", Nova Senha: " + newPassword);
-    document.getElementById("changeAccessForm").reset();
-    // Adicione lógica para processar a alteração de acesso, como enviar os dados para o servidor
+
+// Evitar envio do formulário
+let btnSubmit = document.querySelector('button[type="submit"]');
+let inputCorretos = {
+    nome: false,
+    comum: false,
+    cpf: false,
+
+};
+
+btnSubmit.addEventListener("click", (e) => {
+    if(!Object.values(inputCorretos).every(input => input === true)) {
+        e.preventDefault();
+        alert("Preencha todos os campos obrigatórios!");
+    } else {
+        alert("Formulário enviado com sucesso");
+    }
 });
-
-//reativa acesso
-
-document.getElementById("reactivateAccessForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    var email = document.getElementById("email").value;
-    console.log("Email: " + email);
-    document.getElementById("reactivateAccessForm").reset();
-    // Adicione lógica para reativar o acesso, como enviar um email de confirmação
-});
-

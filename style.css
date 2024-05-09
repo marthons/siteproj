@@ -1,22 +1,127 @@
-*{
-    background-color: #CDD4DC;  
-    font-family: Verdana, sans-serif;
+:root {
+    --cor-primaria: #72b1a4;
+    --cor-secundaria: #abccb1; 
+    --cor-texto: #539fa2;
+    --cor-fundo:  #d4e2b6;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--cor-fundo);
+  }
+  
+.texto {
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    font-size: 2.5rem;
+}
+
+.forms {
+    text-align: center; /* Centraliza os formulários */
+}
+
+.container {
+    display: flex; /* Utiliza um contêiner flexível */
+    flex-direction: column; /* Os itens são empilhados verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente */
+}
+  
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    background-color: var(--cor-secundaria);
+    border-radius: 16px;
+    padding: 1.5rem 40px;
+  }
+  
+h2 {
+    font-size: 2rem;
+    margin: 1.5rem;
+    color: var(--cor-texto);
+  }
+
+h3 {
+    font-size: 15px;
+    margin: 50px;
+    color: var(--cor-texto);
+  }
+  
+label {
+    margin-bottom: .2rem;
+    position: relative;
+    background-color: var(--cor-secundaria);
+  }
+  
+label:not(:first-of-type){
+    margin-top: 1rem;
+  }
+  
+input {
+    padding: .2rem .5rem;
+  }
+  
+.helper-text {
+    display: none;
+    font-size: .8rem;
+    color: darkred;
+  }
+  
+.orientacao {
+    margin-top: 1.5rem;
+    font-size: .7rem;
+  }
+  
+button {
+    width: 100px;
+    height: 40px;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    align-self: center;
+    border-radius: 50px;
+  }
+  
+  /* ---------- Estilos dinâmicos ---------- */
+.required-popup::after {
+    content: "*Campo obrigatório";
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #000;
+    font-size: .65rem;
+    padding: .2rem .3rem;
+    width: auto;
+    display: block;
+    background-color: var(--cor-fundo);
+  }
+  
+input.error {
+    border: solid 2px #992020;
+    background-color: var(--cor-fundo);
+    color: #662020;
+  }
+  
+input.correct {
+    background-color: var(--cor-fundo);
+    border: solid 2px #206620;
+    color: #206620;
+  }
+  
+.visible {
+    display: block;
+  }
 
 .principal {
     width: 100vw;
     height: 100vh;
     text-align: center;
+    font-family: Verdana, sans-serif;
 }
 
 .area-texto {
     padding: 8% 20% 10% 20%;
-}
-
-.texto {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #201E1E;
 }
 
 .area-links {
@@ -28,14 +133,14 @@
     color: #033D60;
     text-decoration: none;
     font-size: 1.5rem;
-    background-color: #fff;
+    background-color: var(--cor-fundo);
     padding: 18px;
     border-radius: 35px;
     margin-bottom: 1rem;
 }
 
 .link:hover {
-    color: #fff;
+    color: var(--cor-secundaria);
     text-decoration: none;
     background-color: #033D60;
     padding: 18px;
